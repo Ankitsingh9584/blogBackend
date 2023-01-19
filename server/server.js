@@ -4,7 +4,7 @@ const app=express();
 app.use(express.json());
 app.use(cors());
 const connect=require("./config/db");
-
+const PORT=process.env.PORT || 8080
 // routes
 const userRegister=require("./routes/user")
 const blog=require("./routes/blog");
@@ -16,6 +16,6 @@ app.use("/blog",blog)
 app.use("/auth",googleAuth);
 app.use("/",comment)
 app.use("/",forgotPass)
-app.listen(8080,async()=>{
+app.listen(PORT,async()=>{
 await connect();
 })
